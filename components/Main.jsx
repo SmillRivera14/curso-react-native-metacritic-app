@@ -1,27 +1,40 @@
 import { useEffect, useState } from "react";
-import { View, ScrollView } from "react-native";
+import { FlatList, View, ActivityIndicator } from "react-native";
 import { getLatestGames } from "../lib/metacritic";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { GameCard } from "./GameCard";
+import { Logo } from "./Logo";
 
 export function Main() {
   const [games, setGames] = useState([]);
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
-    getLatestGames().then((games) => {
-      setGames(games);
-    });
+    getLatestGames()
+      .then((games) => {
+        console.log("Games fetched:", games);
+        setGames(games);
+      })
+      .catch((error) => {
+        console.error("Error fetching games:", error);
+      });
   }, []);
 
   return (
     <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      {/* primera forma de hacer que sea deslizable  */}
-      <ScrollView>
-        {games.map((game) => (
-          <GameCard key={game.slag} game={game} />
-        ))}
-      </ScrollView>
+      <View style={{ marginBottom: 20, marginTop: 20 }}>
+        <Logo />
+      </View>
+      {games.length === 0 ? (
+        <ActivityIndicator color={"#fff"} size={"large"} />
+      ) : (
+        // primera forma de hacer que sea deslizable
+        <FlatList
+          data={games}
+          keyExtractor={(games) => games.slug}
+          renderItem={({ item }) => <GameCard game={item} />}
+        />
+      )}
     </View>
   );
 }
