@@ -4,7 +4,10 @@ import { Animated } from "react-native";
 
 export function GameCard({ game }) {
   return (
-    <View key={game.slug} style={styles.card}>
+    <View
+      key={game.slug}
+      className="flex-1 bg-black items-center justify-center px-3"
+    >
       <Image source={{ uri: game.image }} style={styles.image} />
       <Text style={styles.title}>{game.title}</Text>
       <Text style={styles.description}>{game.description}</Text>
