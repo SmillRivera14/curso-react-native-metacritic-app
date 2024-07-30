@@ -24,13 +24,15 @@ export function Main() {
 
   return (
     <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View style={{ marginBottom: 20, marginTop: 20 }}>
-        <Logo />
-      </View>
+      <View className="flex-row items-center justify-between mb-4">
+        <View>
+          <Logo />
+        </View>
 
-      <Link href="/about">
-        <CircleInfoICon />
-      </Link>
+        <Link href="/about">
+          <CircleInfoICon />
+        </Link>
+      </View>
 
       {games.length === 0 ? (
         <ActivityIndicator color={"#fff"} size={"large"} />
