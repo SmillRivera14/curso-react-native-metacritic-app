@@ -5,7 +5,7 @@ import { useLocalSearchParams } from "expo-router";
 export default function Detail() {
   const { gameslug } = useLocalSearchParams();
   return (
-    <View className="items-center justify-center flex-1">
+    <View className="items-center justify-center flex-1 bg-black">
       <View>
         <Text className="mb-8 text-2xl font-bold text-white">
           Detalles del juego {gameslug}

@@ -23,17 +23,7 @@ export function Main() {
   }, []);
 
   return (
-    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View className="flex-row items-center justify-between mb-4">
-        <View>
-          <Logo />
-        </View>
-
-        <Link href="/about">
-          <CircleInfoICon />
-        </Link>
-      </View>
-
+    <View className="bg-black">
       {games.length === 0 ? (
         <ActivityIndicator color={"#fff"} size={"large"} />
       ) : (
