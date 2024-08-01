@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView } from "react-native";
 import { getGameDetails } from "../lib/metacritic";
 import { Score } from "../components/Score";
+import { StatusBar } from "expo-status-bar";
 
 export default function Detail() {
   const { gameslug } = useLocalSearchParams();
@@ -29,6 +30,7 @@ export default function Detail() {
         }}
       />
       <View>
+        <StatusBar style="auto" />
         {gameInfo === null ? (
           <ActivityIndicator color={"#fff"} size={"large"} />
         ) : (
