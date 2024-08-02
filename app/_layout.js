@@ -1,7 +1,6 @@
-import { Pressable, View } from "react-native";
-import { Link, Stack } from "expo-router";
+import { View } from "react-native";
+import { Stack } from "expo-router";
 import { Logo } from "../components/Logo";
-import { CircleInfoICon } from "../components/Icons";
 
 export default function Layaut() {
   return (
@@ -12,13 +11,6 @@ export default function Layaut() {
           headerTintColor: "white",
           headerTitle: "",
           headerLeft: () => <Logo />,
-          headerRight: () => (
-            <Link asChild href="/about">
-              <Pressable>
-                <CircleInfoICon />
-              </Pressable>
-            </Link>
-          ),
         }}
       />
     </View>
