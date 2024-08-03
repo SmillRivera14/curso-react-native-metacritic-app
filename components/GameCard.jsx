@@ -1,35 +1,40 @@
 import { useEffect, useRef } from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { Animated } from "react-native";
-import { Score } from "./Score";
 import { Link } from "expo-router";
 import { styled } from "nativewind";
+import { BlurView } from "expo-blur";
 
-const StylePressable = styled(Pressable);
+const StyledPressable = styled(Pressable);
 
-export function GameCard({ game }) {
+export default function GameCard({ game }) {
   return (
     <Link href={`/${game.slug}`} asChild>
-      <StylePressable className="p-4 mb-2 border border-black active:opacity-70 active:border-white/50 bg-gray-500/20 rounded-xl">
-        <View key={game.slug} className="flex-row gap-4">
-          <Image source={{ uri: game.image }} style={styles.image} />
+      <StyledPressable className="mb-4 group">
+        <View className="relative overflow-hidden rounded-lg shadow-lg">
+          <Image
+            source={{ uri: game.image }}
+            style={{ width: "100%", height: 500 }}
+            resizeMode="cover"
+            className="overflow-hidden"
+          />
 
-          <View className="flex-shrink">
-            <Text style={styles.title} className="mb-1">
-              {game.title}
-            </Text>
+          <View className="absolute bottom-0 left-0 right-0 p-4">
+            <BlurView intensity={70} style={styles.blurContainer} tint="dark">
+              <Text className="text-xl font-bold text-white truncate">
+                {game.title}
+              </Text>
 
-            <Score score={game.score} maxScore={100} />
-            <Text className="flex-shrink mt-2" style={styles.description}>
-              {game.description.slice(0, 100)}...
-            </Text>
+              <Text className="text-lg text-white/90 line-clamp-2">
+                {game.description.slice(0, 70)}...
+              </Text>
+            </BlurView>
           </View>
         </View>
-      </StylePressable>
+      </StyledPressable>
     </Link>
   );
 }
-
 export function AnimatedGameCard({ game, index }) {
   const opacity = useRef(new Animated.Value(0)).current;
 

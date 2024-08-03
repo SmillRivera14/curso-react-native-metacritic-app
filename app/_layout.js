@@ -10,7 +10,7 @@ export default function Layaut() {
           headerStyle: { backgroundColor: "black" },
           headerTintColor: "white",
           headerTitle: "",
-          headerLeft: () => <Logo />,
+          headerShown: false,
         }}
       />
     </View>

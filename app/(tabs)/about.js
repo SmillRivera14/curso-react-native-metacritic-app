@@ -2,10 +2,12 @@ import { Link, Stack } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { HomeIcon } from "../../components/Icons";
 import { Screen } from "../../components/Screen";
+import { StatusBar } from "expo-status-bar";
 
 export default function About() {
   return (
     <Screen>
+      <StatusBar style="light" />
       <ScrollView>
         {/* <View className="flex-row items-center mb-4 ">
         </View> */}

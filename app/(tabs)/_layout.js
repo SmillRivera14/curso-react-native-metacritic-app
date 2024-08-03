@@ -1,11 +1,11 @@
 import { Tabs } from "expo-router";
 import { HomeIcon, InfoIcon } from "../../components/Icons";
+import { Logo } from "../../components/Logo";
 
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
         tabBarStyle: { backgroundColor: "#000" },
         tabBarActiveTintColor: "#ffee00",
       }}
@@ -15,6 +15,9 @@ export default function TabsLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+          headerLeft: () => <Logo />,
+          headerStyle: { backgroundColor: "black" },
+          headerTitle: "",
         }}
       />
 
@@ -23,6 +26,9 @@ export default function TabsLayout() {
         options={{
           title: "Acerca de",
           tabBarIcon: ({ color }) => <InfoIcon color={color} />,
+          headerStyle: { backgroundColor: "black" },
+          headerShown: true,
+          headerTintColor: "white",
         }}
       />
     </Tabs>

@@ -22,15 +22,14 @@ export default function Detail() {
     <Screen>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: "#ffee00" },
-          headerTintColor: "black",
+          headerStyle: { backgroundColor: "#000", headerTintColor: "white" },
           headerLeft: () => {},
           headerTitle: "Detalles de juego",
           headerRight: () => {},
         }}
       />
       <View>
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
         {gameInfo === null ? (
           <ActivityIndicator color={"#fff"} size={"large"} />
         ) : (
